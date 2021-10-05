@@ -1,0 +1,22 @@
+.bg-gradient-primary {
+  background-color: #000000;
+  background-image: linear-gradient(180deg,#1f1f1f 10%,#3e3e3e);
+  background-size: cover;
+}
+
+.bg-white {
+  background-color: rgb(235,47,47)!important;
+}
+
+.text-dark {
+  color: rgb(235,47,47)!important;
+}
+
+.text-primary {
+  color: #35373a!important;
+}
+
+.navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
+  color: rgba(255,69,69,0.75);
+}
+

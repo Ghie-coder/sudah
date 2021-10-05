@@ -1,0 +1,11 @@
+a:hover {
+  color: rgb(187,11,0);
+  text-decoration: underline;
+}
+
+a {
+  color: rgb(187,11,0);
+  text-decoration: none;
+  background-color: transparent;
+}
+
