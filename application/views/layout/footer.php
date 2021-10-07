@@ -54,7 +54,7 @@
 
   <div class="container">
     <div class="copyright">
-      &copy; Copyright <strong>MCC2021</strong>. All Rights Reserved
+      &copy; Copyright <strong>SudahVeterinaryClinic</strong>. All Rights Reserved
     </div>
   </div>
 </footer><!-- End Footer -->

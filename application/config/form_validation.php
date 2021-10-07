@@ -3,20 +3,72 @@
 $config = array(
         'signup' => array(
                 array(
-                        'field' => 'username',
-                        'label' => 'Username',
+                        'field' => 'fname',
+                        'label' => 'First Name',
                         'rules' => 'required'
                 ),
                 array(
-                        'field' => 'password',
-                        'label' => 'Password',
+                        'field' => 'mname',
+                        'label' => 'Middle Name',
+                        'rules' => 'required'
+                ),
+                array(
+                        'field' => 'lname',
+                        'label' => 'Last Name',
                         'rules' => 'required'
                 ),
                 array(
                         'field' => 'email',
                         'label' => 'Email',
+                        'rules' => 'required|valid_email'
+                ),
+                array(
+                        'field' => 'cnum',
+                        'label' => 'Contact Number',
+                        'rules' => 'required|numeric|min_length[8]|max_length[12]'
+                ),
+                array(
+                        'field' => 'uname',
+                        'label' => 'Username',
                         'rules' => 'required'
-                )
+                ),
+                array(
+                        'field' => 'pass',
+                        'label' => 'Password',
+                        'rules' => 'required'
+                ),
+
+                array(
+                        'field' => 'petDOB',
+                        'label' => 'Pet - Date of Birth',
+                        'rules' => 'required'
+                ),
+                array(
+                        'field' => 'petGender',
+                        'label' => 'Pet Gender',
+                        'rules' => 'required'
+                ),
+
+                array(
+                        'field' => 'petColor',
+                        'label' => 'Pet Color',
+                        'rules' => 'required'
+                ),
+                array(
+                        'field' => 'petWeight',
+                        'label' => 'Pet Weight',
+                        'rules' => 'required'
+                ),
+                array(
+                        'field' => 'petBreed',
+                        'label' => 'Pet Breed',
+                        'rules' => 'required'
+                ),
+                array(
+                        'field' => 'petSpecies',
+                        'label' => 'Pet Species',
+                        'rules' => 'required'
+                ),
         ),
         'user/edit' => array(
                 array(
@@ -118,6 +170,18 @@ $config = array(
                 ),
         ),
 
+        'branch' => array(
+                array(
+                        'field' => 'branch_name',
+                        'label' => 'Branch Name',
+                        'rules' => 'required|max_length[255]'
+                ),
+                array(
+                        'field' => 'branch_address',
+                        'label' => 'Branch Address',
+                        'rules' => 'required|max_length[255]'
+                ),
+        ),
 );
 
 

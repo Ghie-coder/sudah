@@ -17,8 +17,11 @@
                 <li class="nav-item"  role="presentation">
                     <a href="<?php echo base_url('client-dashboard');?>" class="nav-link">Dashboard</a>
                 </li>
+                <li class="nav-item"  role="presentation">
+                    <a href="<?php echo base_url();?>" class="nav-link">Home</a>
+                </li>
                 <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fa fa-gear" style="font-size: 25px;margin-left: 0px;"></i></a>
-                    <div class="dropdown-menu"><a class="dropdown-item" href="<?php echo base_url('account');?>">My Account</a>
+                    <div class="dropdown-menu"><a class="dropdown-item" href="<?php echo base_url('account');?>">My Account</a><a class="dropdown-item" href="#">Change Password</a>
                     <a class="dropdown-item" href="<?php echo base_url('logout');?>">Logout</a></div>
                 </li>
             </ul>

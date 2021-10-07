@@ -50,72 +50,74 @@ class User extends CI_Controller {
         
     }
 
-    public function signup(){
-        if(isset($_POST) && !empty($_POST)){
-            $this->load->helper(array('form', 'url'));
-            $this->load->library('form_validation');
-            
-            if ($this->form_validation->run() == FALSE){
-                var_dump('redirect');
-                redirect('../signup');
+    public function signup(){            
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
 
-                // $this->load->view('user/signup');
-            }
-            else{
-                var_dump('dashboard');
+        $data['error_msg'] = $this->session->flashdata('error_msg') ? $this->session->flashdata('error_msg') : false; 
+        $data['show_login'] =$this->session->flashdata('show_login') ? $this->session->flashdata('show_login') : false;
+        if($this->session->flashdata('show_login') || $this->session->flashdata('error_msg')){
+            $this->session->sess_destroy();
+        }
+        $data['breeds'] = $this->breeds->getAllList();
+        $data['species'] = $this->speciesM->getAll();
+        $data['colors'] = $this->colors->getAll();
+        $data['page_file'] = 'user/signup';
+        
+        if(isset($_POST) && !empty($_POST)){
+            // print_r('after post');
+            // exit;
+            if ($this->form_validation->run('signup') == FALSE){
+                // print_r('after validation false');
+                // exit;
+                $data['account'] = (object)$_POST;
                 $this->load->view('dashboard', $data);
             }
-
-            $email = $this->users->checkEmail();
-            $username = $this->users->checkUsername();
-
-            if($email == false && $username == false){
-                if($_FILES['petIMG']['name']){
-                    $config['upload_path'] = FCPATH.'/assets/img/pets/';
-                    $config['allowed_types'] = 'gif|jpg|png|';
-                    $new_name = time().$_FILES["petIMG"]['name'];
-                    $config['file_name'] = $new_name;
-                    $this->load->library('upload', $config);
-                    if (!$this->upload->do_upload('petIMG'))
-                    {
-                        $new_name = "";
-                    }                     
-                }else{
-                    $new_name = "";
-                }
-                $result = $this->users->add_user($new_name);
-                $link = '<a href="'.base_url('activate-account?code='.$result['activation_code'].'&id='.$result['id']).'">activate here.</a>';
-                $message = '<p>Congrats on creating your account.</p>';
-                $message .= '<p>please click the provided link below to activate your account</p>';
-                $message .= '<p>'.$link.'</p>';
-                if($this->sendMail($result, $message)){
-                    $this->session->set_flashdata('registered',true);
-                    redirect("../signup");
-                }
-            }
-            elseif($email && $username){
-                $this->session->set_flashdata('email and username exists', true);
-                redirect('../signup');
-            }
-            elseif($email){
-                $this->session->set_flashdata('email registered', true);
-                redirect('../signup');
-            }
             else{
-                $this->session->set_flashdata('username exists', true);
-                redirect('../signup');
+                // print_r('after validation true');
+                // exit;
+                $email = $this->users->checkEmail();
+                $username = $this->users->checkUsername();
+
+                if($email == false && $username == false){
+                    if($_FILES['petIMG']['name']){
+                        $config['upload_path'] = FCPATH.'/assets/img/pets/';
+                        $config['allowed_types'] = 'gif|jpg|png|';
+                        $new_name = time().$_FILES["petIMG"]['name'];
+                        $config['file_name'] = $new_name;
+                        $this->load->library('upload', $config);
+                        if (!$this->upload->do_upload('petIMG'))
+                        {
+                            $new_name = "";
+                        }                     
+                    }else{
+                        $new_name = "";
+                    }
+                    $result = $this->users->add_user($new_name);
+                    $link = '<a href="'.base_url('activate-account?code='.$result['activation_code'].'&id='.$result['id']).'">activate here.</a>';
+                    $message = '<p>Congrats on creating your account.</p>';
+                    $message .= '<p>please click the provided link below to activate your account</p>';
+                    $message .= '<p>'.$link.'</p>';
+                    if($this->sendMail($result, $message)){
+                        $this->session->set_flashdata('registered',true);
+                        redirect("../signup");
+                    }
+                }
+                elseif($email && $username){
+                    $this->session->set_flashdata('email and username exists', true);
+                    redirect('../signup');
+                }
+                elseif($email){
+                    $this->session->set_flashdata('email registered', true);
+                    redirect('../signup');
+                }
+                else{
+                    $this->session->set_flashdata('username exists', true);
+                    redirect('../signup');
+                }
             }
-            
-        }else{
-            $data['error_msg'] = $this->session->flashdata('error_msg') ? $this->session->flashdata('error_msg') : false; 
-            $data['show_login'] =$this->session->flashdata('show_login') ? $this->session->flashdata('show_login') : false;
-            if($this->session->flashdata('show_login') || $this->session->flashdata('error_msg')){
-                $this->session->sess_destroy();
-            }
-            $data['breeds'] = $this->breeds->getAllList();
-            $data['species'] = $this->speciesM->getAll();
-            $data['colors'] = $this->colors->getAll();
-            $data['page_file'] = 'user/signup';
+        }
+        else{
 		    $this->load->view('dashboard', $data);
         }
     }

@@ -26,6 +26,7 @@ class Appointments extends CI_Model {
         $result = $query->result();
         return $result;
     }
+    
     public function getAppointmentsHistory(){
         $this->db->select('appointments.reason,schedules.date as apptDate, pets.name as pet_name, branch.b_name,');
         $this->db->from('appointments');

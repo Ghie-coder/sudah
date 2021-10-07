@@ -86,9 +86,21 @@ $route['staff-portal'] = 'staff/dashboard';
 
 // Admin Controller Routes/Links
 $route['admin-dashboard'] = 'admin/index';
-$route['inventories/index'] = 'admin/inventories/index';
-$route['admin/inventory/add'] = 'inventory/add';
-$route['admin/inventory/edit/(:any)'] = 'inventory/edit/$1';
+
+    // Appointment Controller
+    $route['admin/appointment/add'] = 'appointment/add';
+    $route['admin/appointment/edit/(:any)'] = 'appointment/edit/$1';
+    $route['admin/appointment/view/(:any)'] = 'appointment/view/$1';
+
+    // Branch Controller
+    $route['admin/branch/add'] = 'branch/add';
+    $route['admin/branch/edit/(:any)'] = 'branch/edit/$1';
+    $route['admin/branch/view/(:any)'] = 'branch/view/$1';
+
+    // Inventory Controller
+    $route['inventories/index'] = 'admin/inventories/index';
+    $route['admin/inventory/add'] = 'inventory/add';
+    $route['admin/inventory/edit/(:any)'] = 'inventory/edit/$1';
 
 // Species Controller Routes/Links
 $route['species'] = 'species/dashboard';

@@ -4,7 +4,7 @@
 ?>
 
 <!-- Body Content -->
-<!--<a class="dropdown-item" href="<?php echo base_url('account/edit');?>">Edit</a>-->
+<a class="dropdown-item" href="<?php echo base_url('account/edit');?>">Edit</a>
 
 <?php
 
@@ -17,7 +17,6 @@
     }
 ?>
 
-<a class="btn btn-light submit-button" style="background: rgb(141 197 64);" href="<?php echo base_url('account/edit');?>">Edit</a>
 <a class="btn btn-light submit-button" style="background: rgb(141 197 64);" href="<?php echo base_url('account/change-password');?>">Change Password</a>
 
 <?php

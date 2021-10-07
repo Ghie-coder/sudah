@@ -29,7 +29,13 @@ class Appointment extends CI_Controller {
         $data['branches'] = $this->branches->getAll();
         $data['appointments'] = $this->appointments->getMyAll();
         $data['schedules'] = $this->schedules->getAllWithBranch();
-        $data['page_file'] = 'appointments/form';
+
+        if($this->session->userInfo['user_role'] == "admin"){
+            $data['page_file'] = 'admin/appointments/form';
+        }else{
+            $data['page_file'] = 'appointments/form';
+        }
+        
         $data['pageNavbarTitle'] = "Book Appointment";
 
         if(isset($_POST) && !empty($_POST)){
@@ -45,7 +51,12 @@ class Appointment extends CI_Controller {
             }
         }
         else{
-           $this->load->view('clients/client', $data); 
+            if($this->session->userInfo['user_role'] == "admin"){
+                $this->load->view('admin/admin', $data); 
+            }
+            else{
+                $this->load->view('clients/client', $data); 
+            }
         }
     }
 
@@ -117,7 +128,7 @@ class Appointment extends CI_Controller {
             redirect(base_url());
         }
         $post = $this->input->post();
-        if($post){
+        if(isset($post) && !empty($post)){
             // $appointment = $this->appointments->get($post['appointment_id']);
             $this->appointments->done('done',$post);
         }
