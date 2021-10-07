@@ -26,6 +26,7 @@ class Admin extends CI_Controller {
             $data['species'] = $this->speciesM->getAll();
             $data['appointments'] = $this->appointments->getMyAll();
             $data['appointmentsHistory'] = $this->appointments->getAppointmentsHistory();
+            $data['allAppointments'] = $this->appointments->getAll();
             $data['schedules'] = $this->schedules->getAllWithBranch();
             $data['inventories'] = $this->inventories->getAll();
 		    $this->load->view('admin/admin', $data);

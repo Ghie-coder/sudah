@@ -77,8 +77,64 @@
         </div> 
         <!-- Tab1 End--->
 
-        <!-- Tab2 -->
+        <!-- Tab2 Start -->
         <div class="tab-pane fade" role="tabpanel" id="tab-2" style="height: 900px;">
+            <div style="background-color: #ffffff;margin-top: 23px;color: rgb(133,135,150);">
+                <p class="text-center shadow-sm" style="font-size: 25px;font-family: 'Averia Serif Libre', cursive;color: rgb(60,60,62);margin-left: 0px;background-color: transparent;padding-left: 28px;width: 100%;margin-top: 0px;">Appointments &nbsp;<i class="fa fa-clock" style="margin-left: 3px;"></i></p>
+            </div>
+            <div class="container-fluid" style="margin-bottom: 23px;">
+                <div class="card shadow" style="margin-top: 42px;">
+                    <div class="card-header py-3">
+                        <a href="<?php echo base_url('admin/appointment/add')?>" class="btn btn-primary pull-right" type="button">
+                            <i class="fa fa-plus"> Book Appointment</i>
+                        </a>
+                    </div>
+                    <div class="card-body" style="margin-top: 0px;">
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                    
+                            <table id="allAppointments" class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Date of Appointment</th>
+                                        <th>Patient/Pet</th>
+                                        <th>Branch</th>
+                                        <th>Reason</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($allAppointments as $appointment):?>
+                                        
+                                        <tr>
+                                            <td><?php echo ucwords($appointment->apptDate);?></td>
+                                            <td><?php echo ucwords($appointment->pet_name);?></td>
+                                            <td><?php echo ucwords($appointment->b_name);?></td>
+                                            <td><?php echo ucwords($appointment->reason);?></td>
+                                            <td><?php echo ucwords($appointment->status);?></td>
+                                            <td class="text-center">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Actions
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item" href="<?php echo base_url('pet/view');?>">View</a>
+                                                        <a class="dropdown-item" href="<?php echo base_url('pet/edit');?>">Edit</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach;?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab3 -->
+        <div class="tab-pane fade" role="tabpanel" id="tab-3" style="height: 900px;">
             <div style="background-color: #ffffff;margin-top: 23px;color: rgb(133,135,150);">
                 <p class="text-center shadow-sm" style="font-size: 25px;font-family: 'Averia Serif Libre', cursive;color: rgb(60,60,62);margin-left: 0px;background-color: transparent;padding-left: 28px;width: 100%;margin-top: 0px;">PETS&nbsp;<i class="fa fa-paw" style="margin-left: 3px;"></i></p>
             </div>
@@ -156,80 +212,47 @@
             </div>
         </div>
 
-        <!-- Tab3 Start -->
-        <div class="tab-pane fade" role="tabpanel" id="tab-3" style="height: 900px;">
-            <div style="background-color: #ffffff;margin-top: 23px;color: rgb(133,135,150);">
-                <p class="text-center shadow-sm" style="font-size: 25px;font-family: 'Averia Serif Libre', cursive;color: rgb(60,60,62);margin-left: 0px;background-color: transparent;padding-left: 28px;width: 100%;margin-top: 0px;">PETS&nbsp;<i class="fa fa-paw" style="margin-left: 3px;"></i></p>
-            </div>
-            <div class="container-fluid" style="margin-bottom: 23px;">
-                <div class="card shadow" style="margin-top: 42px;">
-                    <div class="card-header py-3">
-                        <a href="<?php echo base_url('pet/add')?>" class="btn btn-primary pull-right" type="button">
-                            <i class="fa fa-plus"> Add Pet</i>
-                        </a>
-                    </div>
-                    <div class="card-body" style="margin-top: 0px;">
-                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                    
-                            <table id="appointmentsHistory" class="table table-striped table-bordered" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>Patient/Pet</th>
-                                        <th>Branch</th>
-                                        <th>Date of Appointment</th>
-                                        <th>Reason</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach($appointmentsHistory as $item):?>
-                                        
-                                        <tr>
-                                            <td><?php echo ucwords($item->pet_name);?></td>
-                                            <td><?php echo ucwords($item->b_name);?></td>
-                                            <td><?php echo ucwords($item->apptDate);?></td>
-                                            <td><?php echo ucwords($item->reason);?></td>
-                                        </tr>
-                                    <?php endforeach;?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Tab4 Start -->
         <div class="tab-pane fade" role="tabpanel" id="tab-4" style="height: 900px;">
             <div style="background-color: #ffffff;margin-top: 23px;color: rgb(133,135,150);">
-                <p class="text-center shadow-sm" style="font-size: 25px;font-family: 'Averia Serif Libre', cursive;color: rgb(60,60,62);margin-left: 0px;background-color: transparent;padding-left: 28px;width: 100%;margin-top: 0px;">PETS&nbsp;<i class="fa fa-paw" style="margin-left: 3px;"></i></p>
+                <p class="text-center shadow-sm" style="font-size: 25px;font-family: 'Averia Serif Libre', cursive;color: rgb(60,60,62);margin-left: 0px;background-color: transparent;padding-left: 28px;width: 100%;margin-top: 0px;">Branches &nbsp;<i class="fa fa-home" style="margin-left: 3px;"></i></p>
             </div>
             <div class="container-fluid" style="margin-bottom: 23px;">
                 <div class="card shadow" style="margin-top: 42px;">
                     <div class="card-header py-3">
-                        <a href="<?php echo base_url('pet/add')?>" class="btn btn-primary pull-right" type="button">
-                            <i class="fa fa-plus"> Add Pet</i>
+                        <a href="<?php echo base_url('admin/branch/add')?>" class="btn btn-primary pull-right" type="button">
+                            <i class="fa fa-plus"> Add Branch</i>
                         </a>
                     </div>
                     <div class="card-body" style="margin-top: 0px;">
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                     
-                            <table id="appointmentsHistory" class="table table-striped table-bordered" style="width:100%">
+                            <table id="branches" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Patient/Pet</th>
-                                        <th>Branch</th>
-                                        <th>Date of Appointment</th>
-                                        <th>Reason</th>
+                                        <th>Branch ID</th>
+                                        <th>Branch Name</th>
+                                        <th>Branch Address</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($appointmentsHistory as $item):?>
+                                    <?php foreach($branches as $branch):?>
                                         
                                         <tr>
-                                            <td><?php echo ucwords($item->pet_name);?></td>
-                                            <td><?php echo ucwords($item->b_name);?></td>
-                                            <td><?php echo ucwords($item->apptDate);?></td>
-                                            <td><?php echo ucwords($item->reason);?></td>
+                                            <td><?php echo ucwords($branch->b_id);?></td>
+                                            <td><?php echo ucwords($branch->b_name);?></td>
+                                            <td><?php echo ucwords($branch->b_address);?></td>
+                                            <td class="text-center">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Actions
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item" href="<?php echo base_url('admin/branch/view/'.$branch->b_id);?>">View</a>
+                                                        <a class="dropdown-item" href="<?php echo base_url('admin/branch/edit/'.$branch->b_id);?>">Edit</a>
+                                                    </div>
+                                                </div>
+                                            </td>
                                         </tr>
                                     <?php endforeach;?>
                                 </tbody>
@@ -243,7 +266,7 @@
         <!-- Tab5 Start -->
         <div class="tab-pane fade" role="tabpanel" id="tab-5" style="height: 900px;">
             <div style="background-color: #ffffff;margin-top: 23px;color: rgb(133,135,150);">
-                <p class="text-center shadow-sm" style="font-size: 25px;font-family: 'Averia Serif Libre', cursive;color: rgb(60,60,62);margin-left: 0px;background-color: transparent;padding-left: 28px;width: 100%;margin-top: 0px;">Inventory&nbsp;<i class="fa fa-paw" style="margin-left: 3px;"></i></p>
+                <p class="text-center shadow-sm" style="font-size: 25px;font-family: 'Averia Serif Libre', cursive;color: rgb(60,60,62);margin-left: 0px;background-color: transparent;padding-left: 28px;width: 100%;margin-top: 0px;">Inventory&nbsp;<i class="fa fa-list-alt" style="margin-left: 3px;"></i></p>
             </div>
             <div class="container-fluid" style="margin-bottom: 23px;">
                 <div class="card shadow" style="margin-top: 42px;">
@@ -303,7 +326,7 @@
         $('#petTable').DataTable();
         $('#appointmentsTable').DataTable();
         $('#appointmentsHistory').DataTable();
-        $('#appointmentsHistory').DataTable();
+        $('#branches').DataTable();
         $('#inventories').DataTable();
         
     });

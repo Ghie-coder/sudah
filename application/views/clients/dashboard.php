@@ -1,8 +1,8 @@
 <div style="margin-left: 30px;margin-right: 30px;">
     <ul class="nav nav-tabs" role="tablist" style="margin-right: 0px;margin-left: 0px;">
         <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1" style="color: rgb(187,11,0);">Upcoming Appointments</a></li>
-        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-3" style="color: rgb(187,11,0);">Appointments History</a></li>
         <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2" style="color: rgb(187,11,0);">My Pets</a></li>
+        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-3" style="color: rgb(187,11,0);">Appointments History</a></li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade show active" role="tabpanel" id="tab-1" style="height: 900px;">
@@ -154,10 +154,15 @@
         <!-- Tab3 Start -->
         <div class="tab-pane fade" role="tabpanel" id="tab-3" style="height: 900px;">
             <div style="background-color: #ffffff;margin-top: 23px;color: rgb(133,135,150);">
-                <p class="text-center shadow-sm" style="font-size: 25px;font-family: 'Averia Serif Libre', cursive;color: rgb(60,60,62);margin-left: 0px;background-color: transparent;padding-left: 28px;width: 100%;margin-top: 0px;">History&nbsp;<i class="fa fa-clock" style="margin-left: 3px;"></i></p>
+                <p class="text-center shadow-sm" style="font-size: 25px;font-family: 'Averia Serif Libre', cursive;color: rgb(60,60,62);margin-left: 0px;background-color: transparent;padding-left: 28px;width: 100%;margin-top: 0px;">PETS&nbsp;<i class="fa fa-paw" style="margin-left: 3px;"></i></p>
             </div>
             <div class="container-fluid" style="margin-bottom: 23px;">
                 <div class="card shadow" style="margin-top: 42px;">
+                    <div class="card-header py-3">
+                        <a href="<?php echo base_url('pet/add')?>" class="btn btn-primary pull-right" type="button">
+                            <i class="fa fa-plus"> Add Pet</i>
+                        </a>
+                    </div>
                     <div class="card-body" style="margin-top: 0px;">
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                     
@@ -167,8 +172,7 @@
                                         <th>Patient/Pet</th>
                                         <th>Branch</th>
                                         <th>Date of Appointment</th>
-                                        <th>Reason</th>                                        
-                                        <th>Actions</th>
+                                        <th>Reason</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -179,16 +183,6 @@
                                             <td><?php echo ucwords($item->b_name);?></td>
                                             <td><?php echo ucwords($item->apptDate);?></td>
                                             <td><?php echo ucwords($item->reason);?></td>
-                                            <td class="text-center">
-                                                <div class="dropdown">
-                                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Actions
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href='#'>View</a>
-                                                    </div>
-                                                </div>
-                                            </td>
                                         </tr>
                                     <?php endforeach;?>
                                 </tbody>

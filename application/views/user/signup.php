@@ -130,8 +130,6 @@ input[type=submit] {
                 <?php endif;?>
                 <div><h2 style="color: rgb(255 255 255);font-family: 'Averia Libre', cursive; background-color:#8DC540">REGISTRATION</h2></div>
                 <?php echo validation_errors(); ?>
-                <?php echo form_error('lname'); ?>
-                <?php var_dump(form_error('lname')); ?>
                 <div class="form-row form-group"><label class="text-secondary">Last Name</label><input class="form-control" type="text"  placeholder="Last Name" name="lname"></div>
                 <div class="form-row form-group"><label class="text-secondary">First Name</label><input class="form-control" type="text" placeholder="First Name" name="fname" ></div>
                 <div class="form-row form-group"><label class="text-secondary">Middle Name</label><input class="form-control" type="text" placeholder="Middle Name" name="mname" ></div>
